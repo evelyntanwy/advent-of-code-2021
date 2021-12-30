@@ -6,16 +6,30 @@ fs.readFile("input-data.txt", "utf-8", (err, data) => {
   // data.split = a new data determine from a new line,
   // map number = changing them from string into number
 
-  console.log(input);
+  const valuesToCheck = [];
   let counter = 0; /* to have a counter to */
 
   for (let i = 0; i < input.length; i++) {
-    const firstVal = input[i]; /* to counter the first value  */
-    const secondVal = input[i + 1];
+    //--second part of question--//
+    valuesToCheck.push(input.slice(i, i + 3).reduce((acc, v) => acc + v, 0));
+  }
+
+  for (let i = 0; i < valuesToCheck.length; i++) {
+    const firstVal = valuesToCheck[i]; /* to counter the first value  */
+    const secondVal = valuesToCheck[i + 1];
 
     if (secondVal > firstVal) {
       ++counter;
     }
   }
+  //-------------------------//
+  //--first part of question--//
+  // const firstVal = input[i]; /* to counter the first value  */
+  // const secondVal = input[i + 1];
+
+  // if (secondVal > firstVal) {
+  //   ++counter;
+  // }
+
   console.log("counter", counter);
 });
